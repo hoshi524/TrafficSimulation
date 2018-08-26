@@ -90,7 +90,7 @@ public class Output {
                     d += dist(points[p], points[n]) * Math.sqrt(count[p][n]);
                 } else {
                     car = false;
-                    d += dist(points[p], points[n]);
+                    d += dist(points[p], points[n]) / 2;
                 }
                 p = n;
             }
