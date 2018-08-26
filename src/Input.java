@@ -7,7 +7,7 @@ public class Input {
 
     private static final int SIZE = 100;
     private static final double MIN_roadCost = 10, MAX_roadCost = 100;
-    private static final double MIN_railCost = 10, MAX_railCost = 500;
+    private static final double MIN_railCost = 10, MAX_railCost = 100;
 
     public final int N = 1000;
     public final double junctionCost = 100;

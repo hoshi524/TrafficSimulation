@@ -87,14 +87,14 @@ public class Output {
                 int n = paths[i][j];
                 Type t = types[p][n];
                 if (t == Type.road) {
-                    d += dist(points[p], points[n]) * count[p][n];
+                    d += dist(points[p], points[n]) * Math.sqrt(count[p][n]);
                 } else {
                     car = false;
                     d += dist(points[p], points[n]);
                 }
                 p = n;
             }
-            if (car) d /= 8;
+            if (car) d /= 2;
             time += d * d;
         }
     }
