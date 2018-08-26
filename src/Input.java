@@ -6,8 +6,8 @@ import java.util.Random;
 public class Input {
 
     private static final int SIZE = 100;
-    private static final double MIN_roadCost = 1000, MAX_roadCost = 5000;
-    private static final double MIN_railCost = 5000, MAX_railCost = 10000;
+    private static final double MIN_roadCost = 1, MAX_roadCost = 5;
+    private static final double MIN_railCost = 5, MAX_railCost = 10;
 
     public final int N = 1000;
     public final double junctionCost = 10000;

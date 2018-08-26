@@ -108,7 +108,7 @@ public class Output {
     }
 
     public double getScore() {
-        return cost * time / 1000000000;
+        return cost * time / 1000000;
     }
 
     private double dist(Point a, Point b) {
