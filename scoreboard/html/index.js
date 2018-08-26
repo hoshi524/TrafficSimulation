@@ -6,7 +6,12 @@ $(() => {
                 return a.score - b.score;
             });
             result.forEach((x, i) => {
-                $("#list").append("<tr><td>" + (i + 1) + "</td><td>" + x.id + "</td><td>" + x.score + "</td><td>" + x.submittime + "</td></tr>");
+                $("#list").append($("<tr>").append(
+                    $("<td>").text(i + 1),
+                    $("<td>").text(x.id),
+                    $("<td>").text(x.score),
+                    $("<td>").text(x.submittime),
+                ));
             });
         }
     });
