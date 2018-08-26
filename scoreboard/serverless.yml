@@ -1,0 +1,68 @@
+service: scoreboard
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ap-northeast-1
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+plugins:
+  - serverless-s3-sync
+
+custom:
+  s3Sync:
+    - bucketName: trafficsimulation-scoreboard
+      localDir: html
+      acl: public-read
+      followSymlinks: true
+      defaultContentType: text/html
+
+functions:
+  list:
+    handler: handler.list
+    events:
+      - http:
+          path: list
+          method: get
+          cors: true
+  update:
+    handler: handler.update
+    events:
+      - http:
+          path: update
+          method: put
+          cors: true
+
+resources:
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    SiteBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: trafficsimulation-scoreboard
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
