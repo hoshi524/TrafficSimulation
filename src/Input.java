@@ -1,6 +1,7 @@
 import problem.Point;
 
 import java.security.SecureRandom;
+import java.util.Random;
 
 public class Input {
 
@@ -16,8 +17,7 @@ public class Input {
     public final int[] toPoint;
 
     public Input(long seed) {
-        SecureRandom random = new SecureRandom();
-        random.setSeed(seed);
+        Random random = new Random(seed);
         roadCost = MIN_roadCost + random.nextDouble() * (MAX_roadCost - MIN_roadCost);
         railCost = MIN_railCost + random.nextDouble() * (MAX_railCost - MIN_railCost);
         points = new Point[N];

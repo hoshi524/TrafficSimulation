@@ -51,6 +51,7 @@ public class Main {
                 output.write(body.getBytes());
             }
             x.disconnect();
+            if (x.getResponseCode() != 200) throw new RuntimeException();
         } catch (Exception e) {
             System.out.println(url);
             System.out.println(body);
