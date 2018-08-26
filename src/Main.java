@@ -26,6 +26,7 @@ public class Main {
             for (int i = 0; i < 100; ++i) {
                 sum += run(i, command);
             }
+            System.out.println(sum);
             submit(name, sum);
         } else {
             if (args.length < 2) {
