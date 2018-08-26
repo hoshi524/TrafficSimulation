@@ -2,7 +2,7 @@
 using namespace std;
 
 constexpr int N = 1000;
-constexpr double junctionCost = 100;
+constexpr double junctionCost = 10;
 double roadCost, railCost;
 int to[N];
 double points[N][2];
