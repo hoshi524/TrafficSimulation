@@ -93,10 +93,10 @@ public class Output {
                 int n = paths[i][j];
                 Type t = types[p][n];
                 if (t == Type.road) {
-                    d += dist(points[p], points[n]) * Math.sqrt(count[p][n]);
+                    d += dist(points[p], points[n]) * Math.pow(1 + 0.02 * count[p][n], 2);
                 } else {
                     car = false;
-                    d += dist(points[p], points[n]) / 3;
+                    d += dist(points[p], points[n]) / 2;
                 }
                 p = n;
             }

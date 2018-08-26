@@ -24,10 +24,18 @@ public class Main {
             String name = args[2];
             double sum = 0;
             for (int i = 0; i < 100; ++i) {
-                sum += run(i, command);
+                double score = run(i, command);
+                System.out.println(String.format("%2d : %f", i, score));
+                sum += score;
             }
             System.out.println(sum);
             submit(name, sum);
+        } else if (args[0].equals("input")) {
+            if (args.length < 2) {
+                usage();
+                return;
+            }
+            System.out.println(new Input(Long.parseLong(args[1])));
         } else {
             if (args.length < 2) {
                 usage();
@@ -92,6 +100,8 @@ public class Main {
         sb.append("submit 'run command' 'your id'\n");
         sb.append("or\n");
         sb.append("'run command' 'seed(long int)'\n");
+        sb.append("or\n");
+        sb.append("input 'seed(long int)'\n");
         System.out.print(sb.toString());
     }
 

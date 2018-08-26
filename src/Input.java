@@ -10,7 +10,7 @@ public class Input {
     private static final double MIN_railCost = 5, MAX_railCost = 10;
 
     public final int N = 1000;
-    public final double junctionCost = 10000;
+    public final double junctionCost = 10;
     public final double roadCost;
     public final double railCost;
     public final Point[] points;
