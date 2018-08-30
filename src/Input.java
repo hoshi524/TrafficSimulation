@@ -17,7 +17,7 @@ public class Input {
     public final int[] toPoint;
 
     public Input(long seed) {
-        Random random = new Random(seed);
+        Random random = new MTRandom(seed);
         roadCost = MIN_roadCost + random.nextDouble() * (MAX_roadCost - MIN_roadCost);
         railCost = MIN_railCost + random.nextDouble() * (MAX_railCost - MIN_railCost);
         points = new Point[N];
